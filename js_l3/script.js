@@ -21,15 +21,13 @@ let appData = {
 };
 
 function chooseOptExpenses() {
-  for (let y = 0, h = 0; y < 3; y++) {
-    h++;
+  for (let i = 0; i < 3; i++) {
     let c = prompt('Статья необязательных расходов?');
     if ( (typeof(c))=== 'string' && (typeof(c)) != null && c != '') {
-      appData.optionalExpensis[h] = c;
+      appData.optionalExpensis[i] = c;
     } else {
       alert('Пожайлуста, заполните все строки!');
-      h--;
-      y--;
+      i--;
     }
   }
   console.log(appData.optionalExpensis);
