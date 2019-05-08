@@ -1,25 +1,25 @@
 let startBtn = document.getElementById('start'),
-  buV = document.getElementsByClassName('budget-value')[0],
-  daV = document.getElementsByClassName('daybudget-value')[0],
-  leV = document.getElementsByClassName('level-value')[0],
-  exV = document.getElementsByClassName('expenses-value')[0],
-  oeV = document.getElementsByClassName('optionalexpenses-value')[0],
-  inV = document.getElementsByClassName('income-value')[0],
-  moV = document.getElementsByClassName('monthsavings-value')[0],
-  yeV = document.getElementsByClassName('yearsavings-value')[0],
-  expIt = document.getElementsByClassName('expenses-item'),
-  validate1 = document.getElementsByTagName('button')[0],
-  validate2 = document.getElementsByTagName('button')[1],
-  calc = document.getElementsByTagName('button')[2],
-  opExIt = document.querySelectorAll('.optionalexpenses-item'),
-  choInc = document.getElementById('income'),
-  checkbox = document.querySelector('checkbox'),
-  chooseSum = document.querySelector('.choose-sum'),
-  percentV = document.querySelector('.choose-percent'),
-  year = document.querySelector('.year-value'),
-  month = document.querySelector('.month-value'),
-  day = document.querySelector('.day-value');
-
+    buV = document.getElementsByClassName('budget-value')[0],
+    daV = document.getElementsByClassName('daybudget-value')[0],
+    leV = document.getElementsByClassName('level-value')[0],
+    exV = document.getElementsByClassName('expenses-value')[0],
+    oeV = document.getElementsByClassName('optionalexpenses-value')[0],
+    inV = document.getElementsByClassName('income-value')[0],
+    moV = document.getElementsByClassName('monthsavings-value')[0],
+    yeV = document.getElementsByClassName('yearsavings-value')[0],
+    expIt = document.getElementsByClassName('expenses-item'),
+    validate1 = document.getElementsByTagName('button')[0],
+    validate2 = document.getElementsByTagName('button')[1],
+    calc = document.getElementsByTagName('button')[2],
+    opExIt = document.querySelectorAll('.optionalexpenses-item'),
+    choInc = document.getElementById('income'),
+    checkbox = document.querySelector('checkbox'),
+    chooseSum = document.querySelector('.choose-sum'),
+    percentV = document.querySelector('.choose-percent'),
+    year = document.querySelector('.year-value'),
+    month = document.querySelector('.month-value'),
+    day = document.querySelector('.day-value');
+    noMoney = 0;
 
 let money, time;
 
@@ -40,12 +40,16 @@ let appData = {
     }
   },
 };
+validate1.disabled = true;
+validate2.disabled = true;
+calc.disabled = true;
+
 
 // Кнопка старта (Начать расчет). Нажимаем для старта программы.
 startBtn.addEventListener('click', function(){ 
   time = prompt('Введите дату в формате YYYY-MM-DD', '');
   money = +prompt('Ваш бюджет на месяц?', '');
-
+  calc.disabled = false;
   while (isNaN(money) || money == '' || money == null) {
     money = +prompt('Ваш бюджет на месяц?', '');
   }
@@ -56,7 +60,22 @@ startBtn.addEventListener('click', function(){
   month.value = new Date(Date.parse(time)).getMonth() + 1;
   day.value = new Date(Date.parse(time)).getDate();
 });
-
+// Анлок первой кнопки
+expIt[0].addEventListener('input', function() {
+    if (appData.budget == '' || appData.budget == null || appData.budget == undefined) {
+      alert('Нажмите кнопку начать расчет!');
+    } else {
+      validate1.disabled = false;
+    }
+});
+// анлок второй кнопки
+opExIt[0].addEventListener('input', function() {
+  if (appData.budget == '' || appData.budget == null || appData.budget == undefined) {
+    alert('Нажмите кнопку начать расчет!');
+  } else {
+    validate2.disabled = false;
+  }
+});
 // Статьи расходов (утвердить №1).
 validate1.addEventListener('click', function() {
     let sum = 0;
@@ -76,6 +95,7 @@ validate1.addEventListener('click', function() {
         i--; // заставляем заполнить все строки 8)
       }
     } // конец ффункции цикла
+    noMoney = sum;
     exV.textContent = sum;
 });
 
@@ -95,7 +115,7 @@ calc.addEventListener('click', function(){
 
     if(appData.budget != undefined) {
 
-    appData.moneyPerDay = (appData.budget / 30).toFixed();
+    appData.moneyPerDay = ((appData.budget - noMoney) / 30).toFixed();
     daV.textContent = appData.moneyPerDay;
 
     if (appData.moneyPerDay < 100) {
@@ -141,7 +161,7 @@ chooseSum.addEventListener('input', function() {
     yeV.textContent = appData.yearIncome.toFixed(1);
   }
 });
-percent.addEventListener('input', function() {
+percentV.addEventListener('input', function() {
   if (appData.savings == true) {
     let sum = +chooseSum.value,
         percent = +percentV.value;
