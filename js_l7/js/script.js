@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function () {
   'use strict';
   let tab = document.querySelectorAll('.info-header-tab'),
       info = document.querySelector('.info-header'),
-      tabContent = document.querySelectorAll('.info-tabcontect');
+      tabContent = document.querySelectorAll('.info-tabcontent');
 
   function hideTabContent(a) {
     for (let i = a; i < tabContent.length; i++) {
@@ -17,8 +17,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function showTabContent(b) {
     if (tabContent[b].classList.contains('hide')) {
-      tabContent[b].classList.remove('hide');
-      tabContent[b].classList.add('show');
+        tabContent[b].classList.remove('hide');
+        tabContent[b].classList.add('show');
     }
   }
 
