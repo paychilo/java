@@ -1,14 +1,14 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', function() {
 
   'use strict';
   let tab = document.querySelectorAll('.info-header-tab'),
       info = document.querySelector('.info-header'),
-      tabContent = document.querySelectorAll('.info-tabcontect');
+      tabContent = document.querySelectorAll('.info-tabcontent');
 
   function hideTabContent(a) {
     for (let i = a; i < tabContent.length; i++) {
       tabContent[i].classList.remove('show');
-      tabContent[i].classList.add('fade');
+      tabContent[i].classList.add('hide');
     }
   }
 
@@ -16,8 +16,8 @@ window.addEventListener('DOMContentLoaded', function () {
   hideTabContent(1);
 
   function showTabContent(b) {
-    if (tabContent[b].classList.contains('fade')) {
-      tabContent[b].classList.remove('fade');
+    if (tabContent[b].classList.contains('hide')) {
+      tabContent[b].classList.remove('hide');
       tabContent[b].classList.add('show');
     }
   }
@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // Timer
 
-  let deadline = '2019-05-18';
+  let deadline = '2019-05-16';
 
   function getTimeRemaining(endtime) {
     let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -92,12 +92,12 @@ window.addEventListener('DOMContentLoaded', function () {
       
   setClock('timer', deadline);
 
-  // modal window
+  // modal window more
   let more = document.querySelector('.more'),
       overlay = document.querySelector('.overlay'),
       close = document.querySelector('.popup-close');
 
-  more.addEventListener('click', function () {
+  more.addEventListener('click', function() {
     overlay.style.display = 'block';
     this.classList.add('more-splash');
     document.body.style.overflow = 'hidden';
@@ -109,5 +109,19 @@ window.addEventListener('DOMContentLoaded', function () {
     document.body.style.overflow = '';
   });
 
+  // modal in blocks
+
+  let modalBlocks = document.querySelectorAll('.description-btn'),
+      blocks = document.querySelectorAll('.description');
+  
+  for (let i = 0; i < modalBlocks.length; i++) {
+      modalBlocks[i].addEventListener('click', function() {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+      });
+  }
+  
+  
 });
 
