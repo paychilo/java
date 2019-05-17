@@ -1,26 +1,16 @@
-let usAge = document.getElementById('age'),
-    btn = document.querySelector('button');
-    
-
-let value = usAge.value;    
+let age = document.getElementById('age'),
+    btn = document.getElementsByTagName('button')[0];
 class User {
-  constructor(surname, name) {
+  constructor (surname, name) {
     this.surname = surname;
     this.name = name;
-    this.value = value;
   }
-}
-let ivan = new User('Ivanov', 'Vasiliy');
-
-class showUser {
-  constructor(surname, name) {
-    this.value = usAge.value;
-    alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+  showUser() {
+    let value = age.value;
+    console.log(value);
+    alert(`Пользователь ${this.surname} ${this.name}, его возраст ${value} лет.`);
   }
 }
 
-
-// btn.addEventListener('click', );
-
-console.log(ivan)
-
+const Ivan = new User('Petrov', 'Ivan');
+Ivan.showUser();
