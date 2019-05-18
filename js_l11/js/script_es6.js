@@ -134,6 +134,13 @@ window.addEventListener('DOMContentLoaded', () => {
       inputEmail = formEmail.getElementsByTagName('input'),
       statusMessage = document.createElement('div');
   
+  let inputPhone = document.querySelectorAll('input[type="tel"]');
+    for(let i = 0; i < inputPhone.length; i++){ // в инпутах с телефоном вводим только цифры и +
+      inputPhone[i].addEventListener('input', function() {
+      inputPhone[i].value = inputPhone[i].value.replace(/[^+\d]/g, '');
+      });
+    }    
+      
   statusMessage.classList.add('status');
 
   form.addEventListener('submit', function(event) {
@@ -170,9 +177,9 @@ window.addEventListener('DOMContentLoaded', () => {
         input[i].value = '';
     }
   });
-
   formEmail.addEventListener('submit', function(event) {
     event.preventDefault();
+
     formEmail.appendChild(statusMessage);
 
     let request = new XMLHttpRequest();
