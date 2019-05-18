@@ -1,15 +1,17 @@
 class Options {
-  constructor(bg = 'yellow', textAlign = 'center', height = 100, width = 200, fontSize = 28) {
+  constructor(bg, textAlign, height, width, fontSize) {
+    this.bg = bg;
+    this.textAlign = textAlign; 
     this.height = height;
     this.width = width;
-    this.bg = bg;
     this.fontSize = fontSize; 
-    this.textAlign =  textAlign; 
   }
   div() {
     let newElem = document.createElement('div');
     newElem.textContent = prompt('Введите текст', '');
-    newElem.style.cssText =`background: ${this.bg}; textAlign: ${this.textAlign}; height: ${this.height}px; width: ${this.width}px; fontSize: ${this.fontSize}px`;
+    newElem.style.cssText = `background: ${this.bg}; textAlign: ${this.textAlign}; height: ${this.height}px; width: ${this.width}px; fontSize: ${this.fontSize}px`;
+    newElem.style.fontSize = `${this.fontSize}px`;
+    newElem.style.textAlign = `${this.textAlign}`;
     let body = document.getElementsByTagName('body')[0];
     body.insertBefore(newElem, body.children[0]);
     console.log(newElem);
