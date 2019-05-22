@@ -15,7 +15,7 @@ function forms() {
     inputPhone = document.querySelectorAll('input[type="tel"]');
 
   for (let i = 0; i < inputPhone.length; i++) { // в инпутах с телефоном вводим только цифры и +
-    inputPhone[i].addEventListener('input', function () {
+    inputPhone[i].addEventListener('input', () => {
       inputPhone[i].value = inputPhone[i].value.replace(/[^+\d]/g, '');
     });
   }
@@ -23,17 +23,17 @@ function forms() {
   statusMessage.classList.add('status');
 
   function sendForm(elem) {
-    elem.addEventListener('submit', function (e) {
+    elem.addEventListener('submit', (e) => {
       e.preventDefault();
       elem.appendChild(statusMessage);
       let formData = new FormData(elem);
 
       function postData(data) {
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
           let request = new XMLHttpRequest();
           request.open('POST', 'server.php');
           request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-          request.onreadystatechange = function () {
+          request.onreadystatechange = () => {
             if (request.readyState < 4) {
               resolve();
             } else if (request.readyState === 4) {

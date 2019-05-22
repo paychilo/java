@@ -15,7 +15,7 @@ function calc() {
     personsSum = +this.value;
     total = (daysSum + personsSum) * 4000;
 
-    if (restDays.value == "" || persons.value == "") {
+    if (+restDays.value < 1 || +persons.value < 1) {
       totalValue.innerHTML = 0;
     } else if (place.options[place.selectedIndex].value == 1) {
       totalValue.innerHTML = total;
@@ -30,7 +30,7 @@ function calc() {
     daysSum = +this.value;
     total = (daysSum + personsSum) * 4000;
 
-    if (restDays.value == "" || persons.value == "") {
+    if (+restDays.value < 1 || +persons.value < 1) {
       totalValue.innerHTML = 0;
     } else if (place.options[place.selectedIndex].value == 1) {
       totalValue.innerHTML = total;
@@ -42,7 +42,7 @@ function calc() {
   });
 
   place.addEventListener('change', function () {
-    if (restDays.value == "" || persons.value == "") {
+    if (+restDays.value < 1 || +persons.value < 1) {
       totalValue.innerHTML = 0;
     } else {
       let a = total;
@@ -51,7 +51,7 @@ function calc() {
   });
 
   for (let i = 0; i < inputCalc.length; i++) { // в инпутах с number вводим только цифры
-    inputCalc[i].addEventListener('input', function () {
+    inputCalc[i].addEventListener('input', () => {
       inputCalc[i].value = inputCalc[i].value.replace(/[^\d]/g, '');
     });
   }

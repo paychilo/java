@@ -136,7 +136,7 @@ function calc() {
     personsSum = +this.value;
     total = (daysSum + personsSum) * 4000;
 
-    if (restDays.value == "" || persons.value == "") {
+    if (+restDays.value < 1 || +persons.value < 1) {
       totalValue.innerHTML = 0;
     } else if (place.options[place.selectedIndex].value == 1) {
       totalValue.innerHTML = total;
@@ -151,7 +151,7 @@ function calc() {
     daysSum = +this.value;
     total = (daysSum + personsSum) * 4000;
 
-    if (restDays.value == "" || persons.value == "") {
+    if (+restDays.value < 1 || +persons.value < 1) {
       totalValue.innerHTML = 0;
     } else if (place.options[place.selectedIndex].value == 1) {
       totalValue.innerHTML = total;
@@ -163,7 +163,7 @@ function calc() {
   });
 
   place.addEventListener('change', function () {
-    if (restDays.value == "" || persons.value == "") {
+    if (+restDays.value < 1 || +persons.value < 1) {
       totalValue.innerHTML = 0;
     } else {
       let a = total;
@@ -172,7 +172,7 @@ function calc() {
   });
 
   for (let i = 0; i < inputCalc.length; i++) { // в инпутах с number вводим только цифры
-    inputCalc[i].addEventListener('input', function () {
+    inputCalc[i].addEventListener('input', () => {
       inputCalc[i].value = inputCalc[i].value.replace(/[^\d]/g, '');
     });
   }
@@ -206,7 +206,7 @@ function forms() {
     inputPhone = document.querySelectorAll('input[type="tel"]');
 
   for (let i = 0; i < inputPhone.length; i++) { // в инпутах с телефоном вводим только цифры и +
-    inputPhone[i].addEventListener('input', function () {
+    inputPhone[i].addEventListener('input', () => {
       inputPhone[i].value = inputPhone[i].value.replace(/[^+\d]/g, '');
     });
   }
@@ -214,17 +214,17 @@ function forms() {
   statusMessage.classList.add('status');
 
   function sendForm(elem) {
-    elem.addEventListener('submit', function (e) {
+    elem.addEventListener('submit', (e) => {
       e.preventDefault();
       elem.appendChild(statusMessage);
       let formData = new FormData(elem);
 
       function postData(data) {
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
           let request = new XMLHttpRequest();
           request.open('POST', 'server.php');
           request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-          request.onreadystatechange = function () {
+          request.onreadystatechange = () => {
             if (request.readyState < 4) {
               resolve();
             } else if (request.readyState === 4) {
@@ -289,7 +289,7 @@ function modal() {
     document.body.style.overflow = 'hidden';
   });
 
-  close.addEventListener('click', function () {
+  close.addEventListener('click', () => {
     overlay.style.display = 'none';
     more.classList.remove('more-splash');
     document.body.style.overflow = '';
@@ -366,7 +366,7 @@ function slider() {
     plusSlides(1);
   });
 
-  dotsWrap.addEventListener('click', function (event) {
+  dotsWrap.addEventListener('click',  (event) => {
     for (let i = 0; i < dots.length + 1; i++) {
       if (event.target.classList.contains('dot') && event.target == dots[i - 1]) {
         currentSlide(i);
@@ -408,7 +408,7 @@ function tabs() {
     }
   }
 
-  info.addEventListener('click', function (event) {
+  info.addEventListener('click', (event) => {
     let target = event.target;
     if (target && target.classList.contains('info-header-tab')) {
       for (let i = 0; i < tab.length; i++) {
