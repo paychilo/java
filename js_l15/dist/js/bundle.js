@@ -86,10 +86,36 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/js/calc.js":
-/*!************************!*\
-  !*** ./src/js/calc.js ***!
-  \************************/
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+window.addEventListener('DOMContentLoaded', function () {
+"use strict";
+let calc = __webpack_require__(/*! ./parts/calc.js */ "./src/js/parts/calc.js"),
+    forms = __webpack_require__(/*! ./parts/forms.js */ "./src/js/parts/forms.js"),
+    slider = __webpack_require__(/*! ./parts/slider.js */ "./src/js/parts/slider.js"),
+    tabs = __webpack_require__(/*! ./parts/tabs.js */ "./src/js/parts/tabs.js"),
+    timer = __webpack_require__(/*! ./parts/timer.js */ "./src/js/parts/timer.js"),
+    modalBlocks = __webpack_require__(/*! ./parts/modalBloks.js */ "./src/js/parts/modalBloks.js");
+
+  calc();
+  forms();
+  slider();
+  tabs();
+  timer();
+  modalBlocks();  
+});
+
+/***/ }),
+
+/***/ "./src/js/parts/calc.js":
+/*!******************************!*\
+  !*** ./src/js/parts/calc.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -156,10 +182,10 @@ module.exports = calc;
 
 /***/ }),
 
-/***/ "./src/js/forms.js":
-/*!*************************!*\
-  !*** ./src/js/forms.js ***!
-  \*************************/
+/***/ "./src/js/parts/forms.js":
+/*!*******************************!*\
+  !*** ./src/js/parts/forms.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -244,36 +270,10 @@ module.exports = forms;
 
 /***/ }),
 
-/***/ "./src/js/index.js":
-/*!*************************!*\
-  !*** ./src/js/index.js ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-window.addEventListener('DOMContentLoaded', function () {
-"use strict";
-let calc = __webpack_require__(/*! ./calc.js */ "./src/js/calc.js"),
-    forms = __webpack_require__(/*! ./forms.js */ "./src/js/forms.js"),
-    slider = __webpack_require__(/*! ./slider.js */ "./src/js/slider.js"),
-    tabs = __webpack_require__(/*! ./tabs.js */ "./src/js/tabs.js"),
-    timer = __webpack_require__(/*! ./timer.js */ "./src/js/timer.js"),
-    modalBlocks = __webpack_require__(/*! ./modalBloks.js */ "./src/js/modalBloks.js");
-
-  calc();
-  forms();
-  slider();
-  tabs();
-  timer();
-  modalBlocks();  
-});
-
-/***/ }),
-
-/***/ "./src/js/modalBloks.js":
-/*!******************************!*\
-  !*** ./src/js/modalBloks.js ***!
-  \******************************/
+/***/ "./src/js/parts/modalBloks.js":
+/*!************************************!*\
+  !*** ./src/js/parts/modalBloks.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -313,10 +313,10 @@ module.exports = modal;
 
 /***/ }),
 
-/***/ "./src/js/slider.js":
-/*!**************************!*\
-  !*** ./src/js/slider.js ***!
-  \**************************/
+/***/ "./src/js/parts/slider.js":
+/*!********************************!*\
+  !*** ./src/js/parts/slider.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -379,10 +379,10 @@ module.exports = slider;
 
 /***/ }),
 
-/***/ "./src/js/tabs.js":
-/*!************************!*\
-  !*** ./src/js/tabs.js ***!
-  \************************/
+/***/ "./src/js/parts/tabs.js":
+/*!******************************!*\
+  !*** ./src/js/parts/tabs.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -426,10 +426,10 @@ module.exports = tabs;
 
 /***/ }),
 
-/***/ "./src/js/timer.js":
-/*!*************************!*\
-  !*** ./src/js/timer.js ***!
-  \*************************/
+/***/ "./src/js/parts/timer.js":
+/*!*******************************!*\
+  !*** ./src/js/parts/timer.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
