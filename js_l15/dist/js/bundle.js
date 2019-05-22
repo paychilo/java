@@ -112,8 +112,12 @@ function calc() {
 
     if (restDays.value == "" || persons.value == "") {
       totalValue.innerHTML = 0;
-    } else {
+    } else if (place.options[place.selectedIndex].value == 1) {
       totalValue.innerHTML = total;
+    } else if (place.options[place.selectedIndex].value == 1.5) {
+      totalValue.innerHTML = total * 1.5;
+    } else {
+      totalValue.innerHTML = total * 1.8;
     }
   });
 
@@ -123,8 +127,12 @@ function calc() {
 
     if (restDays.value == "" || persons.value == "") {
       totalValue.innerHTML = 0;
-    } else {
+    } else if (place.options[place.selectedIndex].value == 1) {
       totalValue.innerHTML = total;
+    } else if (place.options[place.selectedIndex].value == 1.5) {
+      totalValue.innerHTML = total * 1.5;
+    } else {
+      totalValue.innerHTML = total * 1.8;
     }
   });
 
@@ -293,7 +301,7 @@ function modal() {
     blocks = document.querySelectorAll('.description');
 
   for (let i = 0; i < modalBlocks.length; i++) {
-    modalBlocks[i].addEventListener('click', () => {
+    modalBlocks[i].addEventListener('click', function () {
       overlay.style.display = 'block';
       this.classList.add('more-splash');
       document.body.style.overflow = 'hidden';

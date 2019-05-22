@@ -22,7 +22,7 @@ function modal() {
     blocks = document.querySelectorAll('.description');
 
   for (let i = 0; i < modalBlocks.length; i++) {
-    modalBlocks[i].addEventListener('click', () => {
+    modalBlocks[i].addEventListener('click', function () {
       overlay.style.display = 'block';
       this.classList.add('more-splash');
       document.body.style.overflow = 'hidden';
