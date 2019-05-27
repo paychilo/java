@@ -96,8 +96,10 @@
 window.addEventListener('DOMContentLoaded', function () {
   "use strict";
   let modal60 = __webpack_require__(/*! ./parts/modal60.js */ "./src/js/parts/modal60.js");
+  let timer = __webpack_require__(/*! ./parts/timer.js */ "./src/js/parts/timer.js");    
   
-    modal60();
+  timer();
+  // modal60();
   });
 
 /***/ }),
@@ -112,30 +114,126 @@ window.addEventListener('DOMContentLoaded', function () {
 function modal60() {
   let popup = document.querySelector('.popup'),
     popupClose = document.querySelector('.popup_close'),
+    link1 = document.querySelectorAll('.phone_link')[0],
+    link2 = document.querySelectorAll('.phone_link')[1],
+    element = document.querySelector('.popup_form'),
     overlay = document.querySelector('.overlay');
-
-    function removeTest(e) {
-      if(!e.target.matches('.popup_form, .popup_form *')) {
-        popup.style.display = 'none';
-        overlay.style.display = 'none';
-      }
-  };
   
-  window.addEventListener('click', removeTest);
-
-  setTimeout(() => {
-    window.addEventListener('click', removeTest);
+   
+    link1.addEventListener('click', () => {
+      console.log('Да что это за ебаная хуйня?');
     popup.style.display = 'block';
     overlay.style.display = 'block';
     popupClose.addEventListener('click', () => {
       popup.style.display = 'none';
       overlay.style.display = 'none';
     });
+    popup.addEventListener('click', (event) => {
+      let target = event.target;
+      if (target && target.classList.contains('popup_content')) {
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+    }
+    });});
+  
 
-  }, 60000);
+  link2.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log('Да что это за ебаная хуйня?');
+    popup.style.display = 'block';
+    overlay.style.display = 'block';
+    popupClose.addEventListener('click', () => {
+      popup.style.display = 'none';
+      overlay.style.display = 'none';
+    });
+  });
+
+  setTimeout(() => {
+    if (popup.style.display == 'block') {
+      clearTimeout();
+    } else {
+      popup.style.display = 'block';
+      overlay.style.display = 'block';
+      popupClose.addEventListener('click', () => {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+      });
+    }
+  }, 3000);
 }
 
 module.exports = modal60;
+
+/***/ }),
+
+/***/ "./src/js/parts/timer.js":
+/*!*******************************!*\
+  !*** ./src/js/parts/timer.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function timer() {
+  let deadline = '2019-12-18';
+
+
+  function getTimeRemaining(endtime) {
+    let t = Date.parse(endtime) - Date.parse(new Date()),
+      seconds = Math.floor((t / 1000) % 60),
+      minutes = Math.floor((t / 1000 / 60) % 60),
+      hours = Math.floor((t / 1000 / 60 / 60) % 24),
+      days = Math.floor((t / 1000 / 60 / 60 / 24));
+
+    return {
+      'total': t,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds,
+      'days': days
+    };
+  }
+
+  function setClock(endtime) {
+    let 
+      seconds = document.getElementById('seconds'),
+      minutes = document.getElementById('minutes'),
+      hours = document.getElementById('hours'),
+      days = document.getElementById('days'),
+      timeInterval = setInterval(updateClock, 1000);
+
+    function updateClock() {
+      let t = getTimeRemaining(endtime);
+
+      if (t.total <= 0) {
+        clearInterval(timeInterval);
+        days.textContent = '00';
+        hours.textContent = '00';
+        minutes.textContent = '00';
+        seconds.textContent = '00';
+      } else {
+        days.textContent = t.days;
+        if (t.hours < 10) {
+          hours.textContent = '0' + t.hours;
+        } else {
+          hours.textContent = t.hours;
+        }
+        if (t.minutes < 10) {
+          minutes.textContent = '0' + t.minutes;
+        } else {
+          minutes.textContent = t.minutes;
+        }
+        if (t.seconds < 10) {
+          seconds.textContent = '0' + t.seconds;
+        } else {
+          seconds.textContent = t.seconds;
+        }
+      }
+    }
+  }
+  setClock(deadline);
+}
+
+module.exports = timer;
 
 /***/ })
 
