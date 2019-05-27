@@ -5,9 +5,6 @@ function tabs2() {
     links = slider.getElementsByTagName('a'),
     noClick = slider.getElementsByClassName('no_click');
 
-  console.log(tabs);
-  console.log(links);
-
   showSlides(slideIndex);
 
   function showSlides() {
@@ -17,7 +14,6 @@ function tabs2() {
     for (let i = 0; i < noClick.length; i++) {
       noClick[i].classList.remove('after_click');
     }
-
     tabs[slideIndex - 1].style.display = 'block';
     noClick[slideIndex - 1].classList.add('after_click');
   }

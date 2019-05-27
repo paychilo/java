@@ -97,11 +97,13 @@ window.addEventListener('DOMContentLoaded', function () {
   "use strict";
   let modal60 = __webpack_require__(/*! ./parts/modal60.js */ "./src/js/parts/modal60.js"),
     timer = __webpack_require__(/*! ./parts/timer.js */ "./src/js/parts/timer.js"),
-    tabs2 = __webpack_require__(/*! ./parts/tabs2.js */ "./src/js/parts/tabs2.js");    
+    tabs2 = __webpack_require__(/*! ./parts/tabs2.js */ "./src/js/parts/tabs2.js"),
+    tabs = __webpack_require__(/*! ./parts/tabs.js */ "./src/js/parts/tabs.js");    
   
   timer();
   // modal60();
   tabs2();
+  tabs();
   });
 
 /***/ }),
@@ -168,6 +170,21 @@ module.exports = modal60;
 
 /***/ }),
 
+/***/ "./src/js/parts/tabs.js":
+/*!******************************!*\
+  !*** ./src/js/parts/tabs.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function tabs() {
+
+}
+
+module.exports = tabs;
+
+/***/ }),
+
 /***/ "./src/js/parts/tabs2.js":
 /*!*******************************!*\
   !*** ./src/js/parts/tabs2.js ***!
@@ -182,9 +199,6 @@ function tabs2() {
     links = slider.getElementsByTagName('a'),
     noClick = slider.getElementsByClassName('no_click');
 
-  console.log(tabs);
-  console.log(links);
-
   showSlides(slideIndex);
 
   function showSlides() {
@@ -194,7 +208,6 @@ function tabs2() {
     for (let i = 0; i < noClick.length; i++) {
       noClick[i].classList.remove('after_click');
     }
-
     tabs[slideIndex - 1].style.display = 'block';
     noClick[slideIndex - 1].classList.add('after_click');
   }
