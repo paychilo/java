@@ -95,11 +95,13 @@
 
 window.addEventListener('DOMContentLoaded', function () {
   "use strict";
-  let modal60 = __webpack_require__(/*! ./parts/modal60.js */ "./src/js/parts/modal60.js");
-  let timer = __webpack_require__(/*! ./parts/timer.js */ "./src/js/parts/timer.js");    
+  let modal60 = __webpack_require__(/*! ./parts/modal60.js */ "./src/js/parts/modal60.js"),
+    timer = __webpack_require__(/*! ./parts/timer.js */ "./src/js/parts/timer.js"),
+    tabs2 = __webpack_require__(/*! ./parts/tabs2.js */ "./src/js/parts/tabs2.js");    
   
   timer();
   // modal60();
+  tabs2();
   });
 
 /***/ }),
@@ -163,6 +165,54 @@ function modal60() {
 }
 
 module.exports = modal60;
+
+/***/ }),
+
+/***/ "./src/js/parts/tabs2.js":
+/*!*******************************!*\
+  !*** ./src/js/parts/tabs2.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function tabs2() {
+  let slider = document.querySelector('.decoration_slider'),
+    slideIndex = 1,
+    tabs = document.querySelectorAll('.decoration_content_tab'),
+    links = slider.getElementsByTagName('a'),
+    noClick = slider.getElementsByClassName('no_click');
+
+  console.log(tabs);
+  console.log(links);
+
+  showSlides(slideIndex);
+
+  function showSlides() {
+    for (let i = 0; i < tabs.length; i++) {
+      tabs[i].style.display = 'none';
+    }
+    for (let i = 0; i < noClick.length; i++) {
+      noClick[i].classList.remove('after_click');
+    }
+
+    tabs[slideIndex - 1].style.display = 'block';
+    noClick[slideIndex - 1].classList.add('after_click');
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  slider.addEventListener('click',  (event) => {
+    for (let i = 0; i < links.length + 1; i++) {
+      if (event.target.classList.contains('links') && event.target == links[i - 1]) {
+        currentSlide(i);
+      }
+    }
+  });
+}
+
+module.exports = tabs2;
 
 /***/ }),
 
