@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', function () {
     modalPopup = require('./parts/modal.js');   
   
   timer();
-  // modal60();
+  modal60();
   tabs2();
   tabs();
   pict();
