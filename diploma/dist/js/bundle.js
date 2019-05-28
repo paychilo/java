@@ -98,12 +98,16 @@ window.addEventListener('DOMContentLoaded', function () {
   let modal60 = __webpack_require__(/*! ./parts/modal60.js */ "./src/js/parts/modal60.js"),
     timer = __webpack_require__(/*! ./parts/timer.js */ "./src/js/parts/timer.js"),
     tabs2 = __webpack_require__(/*! ./parts/tabs2.js */ "./src/js/parts/tabs2.js"),
+    pict = __webpack_require__(/*! ./parts/pict.js */ "./src/js/parts/pict.js"),
+    modalCall = __webpack_require__(/*! ./parts/modalCall.js */ "./src/js/parts/modalCall.js"),
     tabs = __webpack_require__(/*! ./parts/tabs.js */ "./src/js/parts/tabs.js");    
   
   timer();
   // modal60();
   tabs2();
   tabs();
+  pict();
+  modalCall();
   });
 
 /***/ }),
@@ -167,6 +171,90 @@ function modal60() {
 }
 
 module.exports = modal60;
+
+/***/ }),
+
+/***/ "./src/js/parts/modalCall.js":
+/*!***********************************!*\
+  !*** ./src/js/parts/modalCall.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function modalCall() {
+  let modal = document.querySelector('.popup_engineer'),
+    btn = document.querySelector('.header_btn'),
+    overlay = document.querySelector('.overlay'),
+    closeBtn = modal.querySelector('.popup_close');
+
+btn.addEventListener('click', () => {
+  modal.style.display = 'block';
+  overlay.style.display = 'block';
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    overlay.style.display = 'none';
+  });
+  modal.addEventListener('click', (event) => {
+    let target = event.target;
+    if (target.classList.contains('popup_engineer')) {
+      modal.style.display = 'none';
+      overlay.style.display = 'none';
+    }
+  });
+});
+    
+  
+}
+
+module.exports = modalCall;
+
+/***/ }),
+
+/***/ "./src/js/parts/pict.js":
+/*!******************************!*\
+  !*** ./src/js/parts/pict.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function pict() {
+  let pict = document.querySelector('.works'),
+    href = pict.getElementsByTagName('a'),
+    overlay = document.getElementsByClassName('overlay')[0],
+    div = document.createElement('div');
+  
+    href[0].addEventListener('click', function (event) {
+      event.preventDefault();
+      div.innerHTML = `<img src="img/our_works/big_img/1.png" alt="">`;
+      div.classList.add('img_pict');
+      pict.appendChild(div);
+      overlay.style.display = 'block';
+      div.addEventListener('click', function (event) {
+        let target = event.target;
+        if (target.classList.contains('img_pict')) {
+          overlay.style.display = "none";
+          div.remove();
+        }
+      });
+    });
+  
+    href[1].addEventListener('click', function (event) {
+      event.preventDefault();
+      div.innerHTML = `<img src="img/our_works/big_img/2.png" alt="">`;
+      div.classList.add('img_pict');
+      pict.appendChild(div);
+      overlay.style.display = 'block';
+      div.addEventListener('click', function (event) {
+        let target = event.target;
+        if (target.classList.contains('img_pict')) {
+          overlay.style.display = "none";
+          div.remove();
+        }
+      });
+    });
+}
+
+module.exports = pict;
 
 /***/ }),
 

@@ -3,10 +3,14 @@ window.addEventListener('DOMContentLoaded', function () {
   let modal60 = require('./parts/modal60.js'),
     timer = require('./parts/timer.js'),
     tabs2 = require('./parts/tabs2.js'),
+    pict = require('./parts/pict.js'),
+    modalCall = require('./parts/modalCall.js'),
     tabs = require('./parts/tabs.js');    
   
   timer();
   // modal60();
   tabs2();
   tabs();
+  pict();
+  modalCall();
   });
