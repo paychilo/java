@@ -5,7 +5,8 @@ window.addEventListener('DOMContentLoaded', function () {
     tabs2 = require('./parts/tabs2.js'),
     pict = require('./parts/pict.js'),
     modalCall = require('./parts/modalCall.js'),
-    tabs = require('./parts/tabs.js');    
+    tabs = require('./parts/tabs.js'),
+    modalPopup = require('./parts/modal.js');   
   
   timer();
   // modal60();
@@ -13,4 +14,5 @@ window.addEventListener('DOMContentLoaded', function () {
   tabs();
   pict();
   modalCall();
+  modalPopup();
   });

@@ -42,7 +42,7 @@ function slider() {
 
   next.addEventListener('click', () => {
     plusSlides(1);
-  });
+  }); 
 
   dotsWrap.addEventListener('click',  (event) => {
     for (let i = 0; i < dots.length + 1; i++) {

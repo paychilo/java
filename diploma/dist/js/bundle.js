@@ -100,7 +100,8 @@ window.addEventListener('DOMContentLoaded', function () {
     tabs2 = __webpack_require__(/*! ./parts/tabs2.js */ "./src/js/parts/tabs2.js"),
     pict = __webpack_require__(/*! ./parts/pict.js */ "./src/js/parts/pict.js"),
     modalCall = __webpack_require__(/*! ./parts/modalCall.js */ "./src/js/parts/modalCall.js"),
-    tabs = __webpack_require__(/*! ./parts/tabs.js */ "./src/js/parts/tabs.js");    
+    tabs = __webpack_require__(/*! ./parts/tabs.js */ "./src/js/parts/tabs.js"),
+    modalPopup = __webpack_require__(/*! ./parts/modal.js */ "./src/js/parts/modal.js");   
   
   timer();
   // modal60();
@@ -108,7 +109,48 @@ window.addEventListener('DOMContentLoaded', function () {
   tabs();
   pict();
   modalCall();
+  modalPopup();
   });
+
+/***/ }),
+
+/***/ "./src/js/parts/modal.js":
+/*!*******************************!*\
+  !*** ./src/js/parts/modal.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function modalPopup() {
+  let phoneLinks = document.querySelectorAll('.phone_link'),
+    overlay = document.querySelector('.overlay'),
+    popup = document.querySelector('.popup'),
+    closeBtn = popup.querySelector('.popup_close');
+
+  console.log(phoneLinks);
+
+  for (let i = 0; i < phoneLinks.length; i++) {
+    phoneLinks[i].addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('salypa');
+      popup.style.display = 'block';
+      overlay.style.display = 'block';
+      closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+      });
+      popup.addEventListener('click', function (event) {
+        let target = event.target;
+        if (target.classList.contains('popup')) {
+          overlay.style.display = "none";
+          popup.style.display = 'none';
+        }
+      });
+    });
+  }
+}
+
+module.exports = modalPopup;
 
 /***/ }),
 
