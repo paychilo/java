@@ -53,7 +53,9 @@ function calc() {
       for (let i = 0; i < a.length; i++) {
         a[i].classList.remove('do_image_more');
       }
-      imgs[slideIndex - 1].style.display = 'block';
+      imgs[slideIndex - 1].style.display = 'inline-block';
+      imgs[slideIndex - 1].style.textAlign = 'center';
+
       a[slideIndex - 1].classList.add('do_image_more');
     }
 

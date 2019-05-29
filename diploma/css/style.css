@@ -893,7 +893,7 @@ textarea:focus {
 .popup_calc_end_content {
   /* display: none; */
   position: fixed;
-  top: 50%;
+  top: 10%;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);

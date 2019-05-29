@@ -1,3 +1,5 @@
+// require('es6-promise').polyfill();
+
 window.addEventListener('DOMContentLoaded', function () {
   "use strict";
   let modal60 = require('./parts/modal60.js'),
