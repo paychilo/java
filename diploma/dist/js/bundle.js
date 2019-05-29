@@ -1719,7 +1719,7 @@ function calc() {
               }
             };
 
-            request.send(client);
+            request.send(json);
             form.appendChild(statusMessage);
           });
         });
