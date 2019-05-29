@@ -25,6 +25,12 @@ function forms() {
       elem.appendChild(statusMessage);
       let formData = new FormData(elem);
 
+      let obj ={};
+      formData.forEach(function(value, key) {
+        obj[key] = value;
+      });
+       let json = JSON.stringify(obj);
+
       function postData(data) {
         return new Promise(() => {
           let request = new XMLHttpRequest();
@@ -41,7 +47,7 @@ function forms() {
               }
             }
           };
-          request.send(data);
+          request.send(json);
           clearInput();
           clearInputEmail();
         });

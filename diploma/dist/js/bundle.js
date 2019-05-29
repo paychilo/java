@@ -1652,7 +1652,6 @@ function calc() {
         for (var _i2 = 0; _i2 < a.length; _i2++) {
           if (a[_i2].classList.contains('do_image_more')) {
             client.variant = _i2 + 1;
-            console.log(client.variant);
           }
         }
 
@@ -1703,6 +1702,7 @@ function calc() {
           });
           endBtn.addEventListener('click', function (e) {
             e.preventDefault();
+            var json = JSON.stringify(client);
             var request = new XMLHttpRequest();
             request.open('POST', 'server.php');
             request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
@@ -1771,6 +1771,11 @@ function forms() {
       e.preventDefault();
       elem.appendChild(statusMessage);
       var formData = new FormData(elem);
+      var obj = {};
+      formData.forEach(function (value, key) {
+        obj[key] = value;
+      });
+      var json = JSON.stringify(obj);
 
       function postData(data) {
         return new _Promise(function () {
@@ -1790,7 +1795,7 @@ function forms() {
             }
           };
 
-          request.send(data);
+          request.send(json);
           clearInput();
           clearInputEmail();
         });
@@ -2005,6 +2010,11 @@ function sixForms() {
       e.preventDefault();
       elem.appendChild(statusMessage);
       var formData = new FormData(elem);
+      var obj = {};
+      formData.forEach(function (value, key) {
+        obj[key] = value;
+      });
+      var json = JSON.stringify(obj);
 
       function postData(data) {
         return new _Promise(function () {
@@ -2024,7 +2034,7 @@ function sixForms() {
             }
           };
 
-          request.send(data);
+          request.send(json);
           clearInput();
           clearInputEmail();
         });

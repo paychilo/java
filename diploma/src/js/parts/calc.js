@@ -93,7 +93,6 @@ function calc() {
         for (let i = 0; i < a.length; i++) {
           if (a[i].classList.contains('do_image_more')) {
             client.variant = i + 1;
-            console.log(client.variant);
           }
         }
         weather[0].addEventListener('change', () => {
@@ -141,6 +140,8 @@ function calc() {
           });
           endBtn.addEventListener('click', (e) => {
             e.preventDefault();
+            let json = JSON.stringify(client);
+            
             let request = new XMLHttpRequest();
             request.open('POST', 'server.php');
             request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
