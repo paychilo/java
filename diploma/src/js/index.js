@@ -8,7 +8,8 @@ window.addEventListener('DOMContentLoaded', function () {
     tabs = require('./parts/tabs.js'),
     modalPopup = require('./parts/modal.js'),
     calc = require('./parts/calc.js'),
-    sixForms = require('./parts/sixForms.js');   
+    sixForms = require('./parts/sixForms.js'),
+    forms = require('./parts/forms.js');   
   
   timer();
   // modal60();
@@ -19,4 +20,5 @@ window.addEventListener('DOMContentLoaded', function () {
   modalPopup();
   calc();
   sixForms();
+  forms();
   });
