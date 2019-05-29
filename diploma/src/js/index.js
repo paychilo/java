@@ -6,13 +6,15 @@ window.addEventListener('DOMContentLoaded', function () {
     pict = require('./parts/pict.js'),
     modalCall = require('./parts/modalCall.js'),
     tabs = require('./parts/tabs.js'),
-    modalPopup = require('./parts/modal.js');   
+    modalPopup = require('./parts/modal.js'),
+    calc = require('./parts/calc.js');   
   
   timer();
-  modal60();
+  // modal60();
   tabs2();
   tabs();
   pict();
   modalCall();
   modalPopup();
+  calc();
   });

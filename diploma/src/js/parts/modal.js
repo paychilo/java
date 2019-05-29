@@ -4,12 +4,9 @@ function modalPopup() {
     popup = document.querySelector('.popup'),
     closeBtn = popup.querySelector('.popup_close');
 
-  console.log(phoneLinks);
-
   for (let i = 0; i < phoneLinks.length; i++) {
     phoneLinks[i].addEventListener('click', (e) => {
       e.preventDefault();
-      console.log('salypa');
       popup.style.display = 'block';
       overlay.style.display = 'block';
       closeBtn.addEventListener('click', () => {

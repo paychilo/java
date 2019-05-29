@@ -43,9 +43,9 @@ function forms() {
                 reject();
               }
             }
-          }
+          };
           request.send(data);
-        })
+        });
       }
 
       function clearInputEmail() {
