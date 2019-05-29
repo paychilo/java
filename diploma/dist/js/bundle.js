@@ -102,7 +102,8 @@ window.addEventListener('DOMContentLoaded', function () {
     modalCall = __webpack_require__(/*! ./parts/modalCall.js */ "./src/js/parts/modalCall.js"),
     tabs = __webpack_require__(/*! ./parts/tabs.js */ "./src/js/parts/tabs.js"),
     modalPopup = __webpack_require__(/*! ./parts/modal.js */ "./src/js/parts/modal.js"),
-    calc = __webpack_require__(/*! ./parts/calc.js */ "./src/js/parts/calc.js");   
+    calc = __webpack_require__(/*! ./parts/calc.js */ "./src/js/parts/calc.js"),
+    sixForms = __webpack_require__(/*! ./parts/sixForms.js */ "./src/js/parts/sixForms.js");   
   
   timer();
   // modal60();
@@ -112,6 +113,7 @@ window.addEventListener('DOMContentLoaded', function () {
   modalCall();
   modalPopup();
   calc();
+  sixForms();
   });
 
 /***/ }),
@@ -436,6 +438,84 @@ function pict() {
 }
 
 module.exports = pict;
+
+/***/ }),
+
+/***/ "./src/js/parts/sixForms.js":
+/*!**********************************!*\
+  !*** ./src/js/parts/sixForms.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function sixForms() {
+  let message = {
+    loading: 'Загрузка...',
+    success: 'Спасибо! Скоро мы с Вами свяжемся!',
+    failure: 'Что-то пошло не так...'
+  };
+
+  let mainForm = document.querySelectorAll('.main_form'),
+    statusMessage = document.createElement('div'),
+    inputName = document.querySelectorAll('input[name="user_name"]'),
+    inputPhone = document.querySelectorAll('input[type="tel"]');
+
+  for (let i = 0; i < inputPhone.length; i++) { // в инпутах с телефоном вводим только цифры и +
+    inputPhone[i].addEventListener('input', () => {
+      inputPhone[i].value = inputPhone[i].value.replace(/[^+\d]/g, '');
+    });
+  }
+
+  function sendForm(elem) {
+    elem.addEventListener('submit', (e) => {
+      e.preventDefault();
+      elem.appendChild(statusMessage);
+      let formData = new FormData(elem);
+
+      function postData(data) {
+        return new Promise(() => {
+          let request = new XMLHttpRequest();
+          request.open('POST', 'server.php');
+          request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+          request.onreadystatechange = () => {
+            if (request.readyState < 4) {
+              statusMessage.innerHTML = message.loading;
+            } else if (request.readyState === 4) {
+              if (request.status == 200 && request.status < 300) {
+                statusMessage.innerHTML = message.success;
+              } else {
+                statusMessage.innerHTML = message.failure;
+              }
+            }
+          };
+          request.send(data);
+          clearInput();
+          clearInputEmail();
+        });
+      }
+
+      function clearInputEmail() {
+        for (let i = 0; i < inputName.length; i++) {
+          inputName[i].value = '';
+        }
+      }
+
+      function clearInput() {
+        for (let i = 0; i < inputPhone.length; i++) {
+          inputPhone[i].value = '';
+        }
+      }
+
+      postData(formData);
+
+    });
+  }
+  for (let i = 0; i < mainForm.length; i++){
+  sendForm(mainForm[i]);
+  }
+}
+
+module.exports = sixForms;
 
 /***/ }),
 

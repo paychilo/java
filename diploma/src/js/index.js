@@ -7,7 +7,8 @@ window.addEventListener('DOMContentLoaded', function () {
     modalCall = require('./parts/modalCall.js'),
     tabs = require('./parts/tabs.js'),
     modalPopup = require('./parts/modal.js'),
-    calc = require('./parts/calc.js');   
+    calc = require('./parts/calc.js'),
+    sixForms = require('./parts/sixForms.js');   
   
   timer();
   // modal60();
@@ -17,4 +18,5 @@ window.addEventListener('DOMContentLoaded', function () {
   modalCall();
   modalPopup();
   calc();
+  sixForms();
   });
